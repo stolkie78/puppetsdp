@@ -1,1 +1,6 @@
---- {}
+--- 
+jenkins::install::ensure:     latest
+jenkins::postconfig::port:    8000
+jenkins::preconfig::packages:
+  - java-1.8.0-openjdk-devel
+
