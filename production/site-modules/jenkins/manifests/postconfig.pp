@@ -1,9 +1,9 @@
 # @summary A short summary of the purpose of this class
 #
-# A description of what this class does
+# Post Jenkins configuration
 #
 # @example
-#   include jenkins::config
+#   include jenkins::postconfig
 class jenkins::postconfig
 {
   # Configure Jenkins port
@@ -16,7 +16,7 @@ class jenkins::postconfig
     require => Package['jenkins'],
   }
   # Disable annoying wizard
-  file_line { "jenkins_disable_wizard":
+  file_line { 'jenkins_disable_wizard':
     path    => '/etc/sysconfig/jenkins',
     replace => true,
     line    => 'JENKINS_JAVA_OPTIONS="-Djava.awt.headless=true -Djenkins.install.runSetupWizard=false"',
@@ -24,8 +24,8 @@ class jenkins::postconfig
     notify  => Service['jenkins'],
     require => Package['jenkins'],
   }
-  # Firewall
-  firewalld_port {"Open Jenkins port ${jenkins::admin_port} in the public Zone":
+  # Open firewall port
+  firewalld_port {"jenkins_admin_port":
       ensure   => 'present',
       zone     => 'public',
       port     => $jenkins::admin_port,

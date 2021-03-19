@@ -1,7 +1,0 @@
---- 
-jenkins::ensure_version:      latest
-jenkins::admin_port:          8000
-jenkins::packages:
-  - java-1.8.0-openjdk-devel
-  - wget
-  - net-utils

@@ -1,26 +1,19 @@
 # @summary A short summary of the purpose of this class
 #
-# A description of what this class does
+# Configure Jenkins requirements
 #
 # @example
+# include jenkins::preconfig
 class jenkins::preconfig
 {
-  case $facts['os']['name'] {
-    'RedHat', 'CentOS':  {
-      yumrepo { 'jenkins':
-        enabled  => 1,
-        descr    => 'Jenkins Yum Repo',
-        baseurl  => 'http://pkg.jenkins.io/redhat',
-        gpgcheck => 0,
-      }
-    }
-    /^(Debian|Ubuntu)$/:  {
-        notify{'setup apt':}
-    }
-    default:  {
-        warning ('OS not supported by this module')
-    }
+  # Add Jenkins repo
+  yumrepo { 'jenkins':
+    enabled  => 1,
+    descr    => 'Jenkins Yum Repo',
+    baseurl  => 'http://pkg.jenkins.io/redhat',
+    gpgcheck => 0,
   }
+  # Install package dependencies
   $jenkins::packages.each | $package | {
     package { $package:
       ensure => present

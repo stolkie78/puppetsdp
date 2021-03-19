@@ -1,5 +1,5 @@
 mod 'puppetlabs-stdlib',         '7.0.0'
-mod 'puppetlabs-firewall',       '3.0.0'       
+mod 'puppet-firewalld',          '4.4.0'       
 
 #
 # Modules that are part of the control repo. R10K doesn't need to touch these
