@@ -4,8 +4,12 @@
 #
 # @example
 #   include jenkins
-class jenkins () {
-    include jenkins::preconfig
-    include jenkins::install
-    include jenkins::postconfig
+class jenkins (
+    String  $ensure_version,
+    Integer $admin_port,
+    Array   $packages
+) {
+    contain jenkins::preconfig
+    contain jenkins::install
+    contain jenkins::postconfig
 }

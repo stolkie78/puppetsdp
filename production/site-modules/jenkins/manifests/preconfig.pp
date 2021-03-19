@@ -3,9 +3,8 @@
 # A description of what this class does
 #
 # @example
-class jenkins::preconfig(
-  Array $packages
-) {
+class jenkins::preconfig
+{
   case $facts['os']['name'] {
     'RedHat', 'CentOS':  {
       yumrepo { 'jenkins':
@@ -22,7 +21,7 @@ class jenkins::preconfig(
         warning ('OS not supported by this module')
     }
   }
-  $packages.each | $package | {
+  $jenkins::packages.each | $package | {
     package { $package:
       ensure => present
     }

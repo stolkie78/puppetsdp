@@ -5,10 +5,9 @@
 # @example
 #   include jenkins::install
 class jenkins::install (
-  String $ensure = 'absent'
 ) {
   package { 'jenkins':
-    ensure  => $ensure,
+    ensure  => $jenkins::ensure_version,
     require => Class['jenkins::preconfig'],
   }
   service { 'jenkins':

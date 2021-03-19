@@ -4,14 +4,13 @@
 #
 # @example
 #   include jenkins::config
-class jenkins::postconfig(
-  Integer $port = '8080'
-) {
+class jenkins::postconfig
+{
   # Configure Jenkins port
-  file_line { "jenkins_port_${port}":
+  file_line { "jenkins_port_${jenkins::admin_port}":
     path    => '/etc/sysconfig/jenkins',
     replace => true,
-    line    => "JENKINS_PORT=\"${port}\"",
+    line    => "JENKINS_PORT=\"${jenkins::admin_port}\"",
     match   => 'JENKINS_PORT=".*"',
     notify  => Service['jenkins'],
     require => Package['jenkins'],
