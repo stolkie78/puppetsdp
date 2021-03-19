@@ -24,4 +24,11 @@ class jenkins::postconfig
     notify  => Service['jenkins'],
     require => Package['jenkins'],
   }
+  # Firewall
+  firewalld_port {"Open Jenkins port ${jenkins::admin_port} in the public Zone":
+      ensure   => 'present',
+      zone     => 'public',
+      port     => $jenkins::admin_port,
+      protocol => 'tcp',
+  }
 }
