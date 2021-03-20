@@ -1,9 +1,8 @@
 mod 'puppetlabs-stdlib',         '7.0.0'
-mod 'puppet-firewalld',          '4.4.0'       
+mod 'puppet-firewalld',          '4.4.0'   
 
 #
 # Modules that are part of the control repo. R10K doesn't need to touch these
 #
 mod 'role',                                 :local => true
 mod 'profile',                              :local => true
-mod 'software',                             :local => true

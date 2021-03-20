@@ -1,1 +1,2 @@
-include jenkins
+# Setup and install jenkins
+include role::jenkins
