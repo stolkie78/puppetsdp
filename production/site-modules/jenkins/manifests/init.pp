@@ -5,9 +5,9 @@
 # @example
 #   include jenkins
 class jenkins (
-    String  $ensure_version,
-    Integer $admin_port,
-    Array   $packages,
+    String  $ensure_version = 'present',
+    Integer $admin_port     = '8080',
+    Array   $packages       = [],
 ) {
     case $facts['os']['family'] {
     'RedHat':  {
